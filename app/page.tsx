@@ -777,6 +777,10 @@ export default function Home() {
       navigator.vibrate(200);
     }
 
+    // Déclenche immédiatement les notifications de donations (Phase 1)
+    setIsUserActive(true);
+    setNotificationPhase(1);
+    
     // Redirection directe vers Stripe
     window.open('https://buy.stripe.com/14AaEWeCW1MkfKmdKbcV204', '_blank');
   };
