@@ -8,7 +8,6 @@ export default function Home() {
   const [currentMessage, setCurrentMessage] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
   const [recentDonor, setRecentDonor] = useState('');
-  const [showSuccess, setShowSuccess] = useState(false);
   const [language, setLanguage] = useState<Language>('fr');
   const [isUserActive, setIsUserActive] = useState(false);
   const [notificationPhase, setNotificationPhase] = useState(1); // Phase 1, 2, ou 3
@@ -778,14 +777,8 @@ export default function Home() {
       navigator.vibrate(200);
     }
 
-    // Animation de succès
-    setShowSuccess(true);
-
-    setTimeout(() => {
-      setShowSuccess(false);
-      // Ouvre Stripe
-      window.open('https://buy.stripe.com/14AaEWeCW1MkfKmdKbcV204', '_blank');
-    }, 1500);
+    // Redirection directe vers Stripe
+    window.open('https://buy.stripe.com/14AaEWeCW1MkfKmdKbcV204', '_blank');
   };
 
   const changeLanguage = (newLang: Language) => {
@@ -841,14 +834,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* Animation de succès */}
-      {showSuccess && (
-        <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
-          <div className="animate-ping absolute inline-flex h-32 w-32 rounded-full bg-green-400 opacity-75"></div>
-          <div className="text-6xl animate-bounce">🎉</div>
         </div>
       )}
 
